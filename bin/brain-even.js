@@ -1,26 +1,29 @@
 #!/usr/bin/env node
 
-import { greetUser, getRandomNumber } from '../src/cli.js';
+import readlineSync from 'readline-sync';
 
-const isEven = (num) => num % 2 === 0;
+const getRandomNumber = () => Math.floor(Math.random() * 100);
+
+const isEven = (number) => number % 2 === 0;
 
 const brainEvenGame = () => {
   console.log('Welcome to the Brain Games!');
-  const userName = greetUser();
+  const name = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${name}!`);
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
   let correctAnswers = 0;
 
   while (correctAnswers < 3) {
-    const number = getRandomNumber(1, 100);
+    const number = getRandomNumber();
     console.log(`Question: ${number}`);
-    const userAnswer = prompt('Your answer: ');
+    const userAnswer = readlineSync.question('Your answer: ');
 
     const correctAnswer = isEven(number) ? 'yes' : 'no';
 
     if (userAnswer !== correctAnswer) {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-      console.log(`Let's try again, ${userName}!`);
+      console.log(`Let's try again, ${name}!`);
       return;
     }
 
@@ -28,7 +31,7 @@ const brainEvenGame = () => {
     correctAnswers += 1;
   }
 
-  console.log(`Congratulations, ${userName}!`);
+  console.log(`Congratulations, ${name}!`);
 };
 
 brainEvenGame();
