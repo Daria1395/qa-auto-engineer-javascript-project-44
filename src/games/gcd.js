@@ -32,4 +32,4 @@ const playGcdGame = () => {
   console.log(`Congratulations, ${name}!`);
 };
 
-export default playGcdGame;
+export { playGcdGame };
