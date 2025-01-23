@@ -1,4 +1,4 @@
-import { playGame } from '../index.js'; // Импортируем общую логику
+import { playGame } from '../index.js'; 
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 

@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import getRandomInt from '../utils/getRandomInt.js'; // Убедитесь, что у Вас есть утилита для генерации случайных чисел
+import getRandomInt from '../utils/getRandomInt.js';
 
 const createProgression = (start, step, length) => {
   return Array.from({ length }, (_, i) => start + i * step);

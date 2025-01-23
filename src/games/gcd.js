@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { getRandomInt, gcd } from '../utils.js';
+import { getRandomInt, gcd } from '../utils/getRandomInt.js';
 
 const roundsCount = 3;
 
