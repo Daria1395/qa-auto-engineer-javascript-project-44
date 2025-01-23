@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { getRandomInt, gcd } from '../utils.js'; // Предполагается, что у Вас есть утилиты для генерации случайных чисел и вычисления НОД
+import { getRandomInt, gcd } from '../utils.js';
 
 const roundsCount = 3;
 
