@@ -1,31 +1,36 @@
-import readlineSync from 'readline-sync';
-import { getRandomInt, gcd } from '../utils/getRandomInt.js';
+#!/usr/bin/env node
 
-const roundsCount = 3;
+import { greetUser, getRandomInt } from '../src/utils.js';
+
+const gcd = (a, b) => {
+  while (b) {
+    [a, b] = [b, a % b];
+  }
+  return a;
+};
 
 const playGcdGame = () => {
   console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
+  const userName = greetUser();
   console.log('Find the greatest common divisor of given numbers.');
 
-  for (let i = 0; i < roundsCount; i += 1) {
+  for (let i = 0; i < 3; i++) {
     const num1 = getRandomInt(1, 100);
     const num2 = getRandomInt(1, 100);
     const correctAnswer = gcd(num1, num2);
     
-    const userAnswer = readlineSync.question(`Question: ${num1} ${num2}\nYour answer: `);
-    
-    if (Number(userAnswer) === correctAnswer) {
+    console.log(`Question: ${num1} ${num2}`);
+    const userAnswer = prompt('Your answer: ');
+
+    if (parseInt(userAnswer, 10) === correctAnswer) {
       console.log('Correct!');
     } else {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-      console.log(`Let's try again, ${name}!`);
+      console.log(`Let's try again, ${userName}!`);
       return;
     }
   }
-  
-  console.log(`Congratulations, ${name}!`);
+  console.log(`Congratulations, ${userName}!`);
 };
 
-export default playGcdGame;
+playGcdGame();
